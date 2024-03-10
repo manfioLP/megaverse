@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 
 app.post('/astral-object', handlers.createAstralObject);
 
-app.delete('/astral-object', handlers.deleteAstralObject);
+app.delete('/astral-object', handlers.removeAstralObject);
 app.listen(port, () => {
 	console.log(`Server running on http://localhost:${port}`);
 });

@@ -1,7 +1,7 @@
 import {createAstralObject} from "./createAstralObject";
-import {deleteAstralObject} from "./deleteAstralObject";
+import {removeAstralObject} from "./deleteAstralObject";
 
 export default {
 	createAstralObject,
-	deleteAstralObject
+	removeAstralObject
 }
