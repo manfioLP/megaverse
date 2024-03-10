@@ -21,10 +21,14 @@ export const removeAstralObject = async (req: Request, res: Response) => {
 }
 
 export const deleteAstralObject = async (type: string, bodyData: { row: number, column: number, candidateId: string }) => {
-	const res = await axios.delete(`${API_SERVICE_URL}astral-objects/polyanets}`, {data: bodyData}) // the delete route doesn't matter much
+	try {
+		const res = await axios.delete(`${API_SERVICE_URL}polyanets`, {data: bodyData}) // the delete route doesn't matter much
 
-	if (res.status >= 200 && res.status < 300) {
-		return {ok: true, msg: "Astral object deleted"}
+		if (res.status >= 200 && res.status < 300) {
+			return {ok: true, msg: "Astral object deleted"}
+		}
+		return {ok: false, ...res.data}
+	} catch (err) {
+		return {ok: false, msg: "Astral object not deleted - something happened"}
 	}
-	return {ok: false, ...res.data}
 }

@@ -46,7 +46,7 @@ export const createAstralObject = async (req: Request, res: Response) => {
 }
 
 export const postAstralObject = async (type: AstralObjectType, bodyData: PolyanetsParams | SoloonsParams | ComethsParams) => {
-	const res = await axios.post(`${API_SERVICE_URL}astral-objects/${type}`, bodyData)
+	const res = await axios.post(`${API_SERVICE_URL}${type}`, bodyData)
 
 	if (res.status >= 200 && res.status < 300) {
 		return {ok: true, msg: "Astral object created"}
