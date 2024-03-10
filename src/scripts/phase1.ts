@@ -22,16 +22,18 @@ const run = async () => {
 
 	const candidateId = process.env.CANDIDATE_ID || ""
 
+	const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
 	// Compare the two maps
 	// ...
-	const promises = []
 	for (let i = 0; i < goalMap.length; i++) {
 		for (let j = 0; j < goalMap[i].length; j++) {
+			await delay(900)
 			const type = getTypeFromGoal(goalMap[i][j])
 			if (type === "space") {
-				promises.push(deleteAstralObject("space", {row: i, column: j, candidateId}))
+				await deleteAstralObject("space", {row: i, column: j, candidateId})
 			} else {
-				promises.push(postAstralObject(type, {row: i, column: j, candidateId}))
+				await postAstralObject(type, {row: i, column: j, candidateId})
 			}
 		}
 	}
